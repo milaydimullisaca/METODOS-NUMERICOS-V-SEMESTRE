@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    double suma = 1;
+
+    for (int i = 0; i < 10000; i++) {
+        suma = suma + 0.00001;
+    }
+
+    cout << "Resultado: " << suma << endl;
+
+    return 0;
+}
