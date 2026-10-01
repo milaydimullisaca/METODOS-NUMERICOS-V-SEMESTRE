@@ -2,19 +2,20 @@
 using namespace std;
 
 int main() {
-    double suma = 1.0;
-    double grupo = 0.0;
+    int suma = 100000;
+    int grupo = 0;
 
     for (int i = 1; i <= 10000; i++) {
-        grupo = grupo + 0.00001;
+        grupo = grupo + 1;
 
         if (i % 100 == 0) {
             suma = suma + grupo;
-            grupo = 0.0;
+            grupo = 0;
         }
     }
 
-    cout << "Resultado: " << suma << endl;
+    cout << "Resultado: " << suma / 100000
+         << "." << suma % 100000 << endl;
 
     return 0;
 }
