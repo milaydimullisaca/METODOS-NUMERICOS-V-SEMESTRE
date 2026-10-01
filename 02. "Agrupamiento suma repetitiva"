@@ -14,8 +14,11 @@ int main() {
         }
     }
 
-    cout << "Resultado: " << suma / 100000
-         << "." << suma % 100000 << endl;
+    cout << "Resultado: "
+         << suma / 100000
+         << "."
+         << suma % 100000
+         << endl;
 
     return 0;
 }
