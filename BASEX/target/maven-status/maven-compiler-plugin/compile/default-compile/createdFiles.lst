@@ -1,0 +1,8 @@
+com\basex\service\ValidationService.class
+com\basex\Main.class
+com\basex\service\HistoryService.class
+com\basex\model\Conversion.class
+com\basex\controller\AboutController.class
+com\basex\model\BaseNumerica.class
+com\basex\controller\ConversionController.class
+com\basex\service\ConversionService.class

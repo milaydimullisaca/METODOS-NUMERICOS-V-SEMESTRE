@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.basex.controller.ConversionController">
+
+    <top>
+        <VBox spacing="5" styleClass="header">
+            <padding>
+                <Insets top="25" right="30" bottom="25" left="30"/>
+            </padding>
+
+            <Label text="BASEX" styleClass="title"/>
+            <Label text="Conversor Universal de Sistemas de Numeración"
+                   styleClass="subtitle"/>
+        </VBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true"
+                    fitToHeight="true"
+                    styleClass="main-scroll">
+
+            <VBox spacing="20" maxWidth="900">
+                <padding>
+                    <Insets top="30" right="40" bottom="30" left="40"/>
+                </padding>
+
+                <VBox spacing="10" styleClass="card">
+
+                   <Label text="Número a convertir"
+       styleClass="section-title"/>
+
+<Label text="Modo de conversión"
+       styleClass="label"/>
+
+<HBox spacing="10">
+
+    <Button fx:id="enterosButton"
+            text="Enteros"
+            onAction="#modoEnteros"
+            styleClass="primary-button"/>
+
+    <Button fx:id="fraccionariosButton"
+            text="Fraccionarios"
+            onAction="#modoFraccionarios"
+            styleClass="secondary-button"/>
+
+</HBox>
+
+<TextField fx:id="numeroField"
+           promptText="Ejemplo: 101010"
+           styleClass="input"/>
+
+                    <HBox spacing="20">
+
+                        <VBox spacing="7" HBox.hgrow="ALWAYS">
+                            <Label text="Base de origen"
+                                   styleClass="label"/>
+
+                            <ComboBox fx:id="baseOrigenCombo"
+                                      maxWidth="Infinity"/>
+                        </VBox>
+
+                        <VBox spacing="7" HBox.hgrow="ALWAYS">
+                            <Label text="Base de destino"
+                                   styleClass="label"/>
+
+                            <ComboBox fx:id="baseDestinoCombo"
+                                      maxWidth="Infinity"/>
+                        </VBox>
+
+                    </HBox>
+
+                    <HBox spacing="12">
+
+    <Button text="Convertir"
+            onAction="#convertir"
+            styleClass="primary-button"/>
+
+    <Button text="Convertir a todas"
+            onAction="#convertirATodas"
+            styleClass="secondary-button"/>
+
+    <Button text="Limpiar"
+            onAction="#limpiar"
+            styleClass="secondary-button"/>
+
+    <Button text="Acerca de"
+            onAction="#mostrarAcercaDe"
+            styleClass="secondary-button"/>
+
+</HBox>
+
+                </VBox>
+
+                <VBox spacing="12" styleClass="card">
+
+                    <Label text="Resultado"
+                           styleClass="section-title"/>
+
+                    <TextArea fx:id="resultadoArea"
+                              editable="false"
+                              wrapText="true"
+                              prefRowCount="5"
+                              styleClass="result-area"/>
+
+                    <Button text="Ver procedimiento"
+                            onAction="#mostrarProcedimiento"
+                            styleClass="secondary-button"/>
+
+                </VBox>
+
+                <VBox spacing="12" styleClass="card">
+
+                    <Label text="Historial"
+                           styleClass="section-title"/>
+
+                    <ListView fx:id="historialList"
+                              prefHeight="180"/>
+
+                    <Button text="Limpiar historial"
+                            onAction="#limpiarHistorial"
+                            styleClass="secondary-button"/>
+
+                </VBox>
+
+            </VBox>
+
+        </ScrollPane>
+    </center>
+
+</BorderPane>
