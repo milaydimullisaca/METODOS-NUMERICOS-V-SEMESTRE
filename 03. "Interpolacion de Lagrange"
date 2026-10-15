@@ -1,0 +1,239 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{lastpage}
+\usepackage{setspace}
+\usepackage[table]{xcolor}
+\usepackage{listings}
+
+\usepackage[
+    a4paper,
+    includehead,
+    top=1.5cm,
+    bottom=2.6cm,
+    left=2cm,
+    right=2cm,
+    headheight=50pt,
+    headsep=0.6cm,
+    footskip=1.2cm
+]{geometry}
+
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+% ---------------------------------------------------------
+% CONFIGURACIÓN DE ENLACES
+% ---------------------------------------------------------
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue,
+    citecolor=blue
+}
+
+% ---------------------------------------------------------
+% COLORES
+% ---------------------------------------------------------
+\definecolor{azulunap}{RGB}{31,78,121}
+\definecolor{azulclaro}{RGB}{234,241,248}
+\definecolor{verdecomentario}{RGB}{0,120,70}
+\definecolor{grisfondo}{RGB}{245,245,245}
+
+% ---------------------------------------------------------
+% CONFIGURACIÓN DEL CÓDIGO C++
+% ---------------------------------------------------------
+\lstset{
+    language=C++,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue}\bfseries,
+    commentstyle=\color{verdecomentario},
+    stringstyle=\color{red},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    numbersep=8pt,
+    backgroundcolor=\color{grisfondo},
+    frame=single,
+    rulecolor=\color{azulunap},
+    breaklines=true,
+    showstringspaces=false,
+    tabsize=4,
+    captionpos=b,
+    keepspaces=true,
+    columns=fullflexible
+}
+
+% ---------------------------------------------------------
+% ENCABEZADO Y PIE DE PÁGINA
+% ---------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+
+\fancyhead[L]{%
+    \raisebox{-0.4\height}{%
+        \includegraphics[width=1.8cm]{unap1.png}%
+    }%
+}
+
+\fancyhead[C]{%
+    \begin{minipage}{0.70\textwidth}
+        \centering
+        \scriptsize
+        \textbf{UNIVERSIDAD NACIONAL DEL ALTIPLANO}\\
+        \textbf{Facultad de Ingeniería Mecánica Eléctrica, Electrónica y Sistemas}\\
+        Escuela Profesional de Ingeniería de Sistemas
+    \end{minipage}%
+}
+
+\fancyhead[R]{%
+    \raisebox{-0.4\height}{%
+        \includegraphics[width=1.8cm]{sis.png}%
+    }%
+}
+
+\fancyfoot[C]{\small Página \thepage\ de \pageref{LastPage}}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% ---------------------------------------------------------
+% DOCUMENTO
+% ---------------------------------------------------------
+\begin{document}
+
+% =========================================================
+% PORTADA
+% =========================================================
+
+\begin{titlepage}
+\thispagestyle{empty}
+\centering
+
+{\Large \textbf{UNIVERSIDAD NACIONAL DEL ALTIPLANO}}\\[1cm]
+
+{\large
+\textbf{FACULTAD DE INGENIERÍA MECÁNICA ELÉCTRICA, ELECTRÓNICA Y SISTEMAS}
+}\\[0.5cm]
+
+\includegraphics[width=0.30\textwidth]{unap1.png}
+\hspace{1cm}
+\includegraphics[width=0.30\textwidth]{sis.png}
+
+\vspace{0.8cm}
+
+\textbf{ESCUELA PROFESIONAL:}\\[0.3cm]
+INGENIERÍA DE SISTEMAS\\[0.5cm]
+
+\textbf{ASUNTO:}\\[0.3cm]
+MÉTODO DE AGRUPAMIENTO\\[0.5cm]
+
+\textbf{CURSO:}\\[0.3cm]
+MÉTODOS NUMÉRICOS\\[0.5cm]
+
+\textbf{DOCENTE:}\\[0.3cm]
+ING. ZANABRIA ORTEGA MILDER\\[0.5cm]
+
+\textbf{PRESENTADO POR:}\\[0.3cm]
+MULLISACA CONDORI MILAYDI\\[0.5cm]
+
+\textbf{SEMESTRE: V}\\[0.5cm]
+
+\textbf{Puno -- Perú}\\[0.3cm]
+2026
+
+\end{titlepage}
+
+% =========================================================
+% CONTENIDO
+% =========================================================
+
+\setcounter{page}{1}
+
+\begin{center}
+    {\Large\bfseries MÉTODO DE AGRUPAMIENTO EN C++}
+\end{center}
+
+\vspace{0.5cm}
+
+\section{Código fuente}
+
+El siguiente programa implementa el método de agrupamiento
+para acumular cantidades pequeñas en grupos de cien iteraciones.
+Al completar cada grupo, su valor se suma al acumulador principal.
+
+\begin{lstlisting}[caption={Implementación del método de agrupamiento en C++}]
+#include <iostream>
+using namespace std;
+
+int main() {
+    float suma = 1.0;
+    float grupo = 0.0;
+
+    for (int i = 0; i < 10000; i++) {
+        grupo = grupo + 0.00001f;
+
+        if ((i + 1) % 100 == 0) {
+            suma = suma + grupo;
+            grupo = 0.0;
+        }
+    }
+
+    cout << "Resultado: " << suma << endl;
+
+    return 0;
+}
+\end{lstlisting}
+
+\section{Descripción del algoritmo}
+
+El programa comienza con una suma inicial de \(1.0\) y un
+acumulador de grupo inicializado en \(0.0\). Después, ejecuta
+10\,000 iteraciones, agregando \(0.00001\) al acumulador
+del grupo en cada repetición.
+
+Cada cien iteraciones, el valor acumulado del grupo se añade
+a la suma principal y el acumulador del grupo vuelve a cero.
+
+\section{Número de grupos}
+
+El número de grupos se obtiene dividiendo las 10\,000 iteraciones
+entre las 100 iteraciones que conforman cada grupo:
+
+\[
+N_{\text{grupos}}=\frac{10000}{100}=100
+\]
+
+Por lo tanto, el algoritmo forma **100 grupos**, cada uno con
+100 iteraciones.
+
+\section{Resultado esperado}
+
+En aritmética real, cada grupo acumula:
+
+\[
+100 \times 0.00001=0.001
+\]
+
+La suma final ideal es:
+
+\[
+S=1.0+(100\times 0.001)=1.1
+\]
+
+El programa utiliza el tipo \texttt{float}, por lo que el
+resultado mostrado puede presentar una pequeña diferencia
+debido a la precisión limitada de la representación numérica.
+
+\section{Enlace del proyecto en GitHub}
+
+El código fuente del proyecto puede consultarse en el siguiente
+repositorio:
+
+\begin{center}
+    \href{https://github.com/milaydimullisaca/METODOS-NUMERICOS-V-SEMESTRE}
+    {\textcolor{blue}{Repositorio METODOS-NUMERICOS-V-SEMESTRE}}
+\end{center}
+
+\end{document}
